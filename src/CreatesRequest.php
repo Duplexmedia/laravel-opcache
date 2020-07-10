@@ -14,7 +14,7 @@ trait CreatesRequest
      */
     public function sendRequest($url)
     {
-        return Lush::headers(config('opcache.headers'))->options(array_merge(['verify_ssl' => config('opcache.verify_ssl'),'verify_host' => config('opcache.verify_host',2)]), config('opcache.options'))->get(config('opcache.url').'/opcache-api/'.$url,
+        return Lush::headers(config('opcache.headers'))->options(array_merge(['verify_ssl' => config('opcache.verify_ssl'),'verify_host' => config('opcache.verify_host',2)], config('opcache.options')))->get(config('opcache.url').'/opcache-api/'.$url,
             ['key' => Crypt::encrypt('opcache')]
         );
     }
